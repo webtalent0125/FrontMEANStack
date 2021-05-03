@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+<mat-card *ngIf="assignmentTransmis" style="max-width: 500px;">
+  <mat-card-header class="card-container">
+    <div mat-card-avatar style="background-image: url('{{assignmentTransmis.photoProf}}'); background-size: cover;"></div>
+    <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
+    <mat-card-subtitle>{{assignmentTransmis.matiere}}</mat-card-subtitle>
+    <mat-card-subtitle>{{assignmentTransmis.dateDeRendu|date}}</mat-card-subtitle>
+    <mat-card-subtitle>Eleve: {{assignmentTransmis.auteur}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{assignmentTransmis.imageMatiere}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>Remarques: {{assignmentTransmis.remarques}}</p>
+    <mat-card-subtitle>{{assignmentTransmis.note}}</mat-card-subtitle>
+  </mat-card-content>
+  <div id="bottom">
+    <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+      Rendu
+    </mat-checkbox>
+
+
+      <button mat-stroked-button [disabled]="!isLoggedIn()" color="primary" (click)="onClickEdit()">EDIT</button>
+
+
+      <button mat-flat-button (click)="onDelete()" color="warn">DELETE</button>
+
+  </div>
+</mat-card>
+</div>

@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ajouterBtn {
+  margin-top:50px;
+  margin-right:30px;
+  align-self: flex-end;
+}
+
+.pagination
+{
+  display: flex;
+  flex-direction: rows;
+}
+
+.boutonsPagination {
+  margin-right:30px;
+  align-self: auto;
+}

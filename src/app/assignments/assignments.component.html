@@ -1,0 +1,49 @@
+<main class="container">
+  <nav class="ajouterBtn">
+    <a routerLink="/add">
+      <button mat-flat-button color="accent">
+        Ajouter Assignment
+      </button>
+    </a>
+  </nav>
+  <h2>{{titre}}</h2>
+  <div class="pagination ">
+    <div class="col-md-12 text-center">
+      <button (click)="premierePage()" class="boutonsPagination btn btn-success">Première</button>
+      <button (click)="pagePrecedente()" [disabled]="!hasPrevPage" class="boutonsPagination btn btn-primary">Page Précédente</button>
+      <button (click)="pageSuivante()" [disabled]="!hasNextPage" class="boutonsPagination btn btn-primary">Page Suivante</button>
+      <button (click)="dernierePage()" class="btn btn-warning">Dernière</button>
+    </div>
+  </div>
+  <br>
+  <mat-divider></mat-divider>
+  <mat-list *ngFor="let a of assignments">
+    <nav>
+      <a routerLink="/assignments/{{a.id}}" class="d-flex justify-content-center">
+
+        <mat-card *ngIf="a" style="max-width: 50%;">
+          <mat-card-header class="card-container">
+            <div mat-card-avatar style="background-image: url('{{a.photoProf}}'); background-size: cover;"></div>
+            <mat-card-title>{{a.nom}}</mat-card-title>
+            <mat-card-subtitle>{{a.matiere}}</mat-card-subtitle>
+            <mat-card-subtitle>{{a.dateDeRendu|date}}</mat-card-subtitle>
+            <mat-card-subtitle>Eleve: {{a.auteur}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{a.imageMatiere}}" alt="Photo of a Shiba Inu">
+          <div id="bottom">
+            <ng-template #nonsoumis>
+              <p>Le devoir {{a.nom}}, n'a pas encore été rendu.</p>
+            </ng-template>
+
+          </div>
+        </mat-card>
+
+
+      </a>
+    </nav>
+
+
+
+
+  </mat-list>
+</main>

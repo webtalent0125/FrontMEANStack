@@ -1,0 +1,65 @@
+<div class="container" *ngIf="assignment">
+
+  <h1>Edition de l'assignment {{assignment.nom}}</h1>
+
+  <form ngForm class="form" style="max-width: 90%">
+
+    <mat-horizontal-stepper #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+
+          <ng-template matStepLabel>Modifier les noms</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Edition du nom de l'eleve" [(ngModel)]="auteur" name="assignment-student">
+            </mat-form-field>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <mat-form-field>
+              <input matInput placeholder="Edition du nom du devoir" [(ngModel)]="nomAssignment" name="assignment-name">
+            </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Suivant</button>
+          </div>
+
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" label="Modifier info devoirs">
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Edition de la date" [(ngModel)]="dateDeRendu" name="date">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <mat-form-field appearance="fill" style="max-width: 500px;">
+            <mat-label>Selection de la matiere</mat-label>
+            <select matNativeControl [(ngModel)]="matiereSelectionnee" name="matiereSelectionnee">
+              <option matNativeControl *ngFor="let matiere of matiereProfs" [ngValue]="matiere">{{matiere.matiere}}</option>
+            </select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Precedent</button>
+            <button mat-button matStepperNext>Suivant</button>
+          </div>
+
+      </mat-step>
+      <mat-step label="Remarque et note">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Note</mat-label>
+            <input matInput type="number" min="0" max="20" [(ngModel)]="note" name="assignment-note">
+          </mat-form-field>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <mat-form-field>
+            <mat-label>Edition des remarques</mat-label>
+            <textarea matInput [(ngModel)]="remarqueAssignment" name="assignment-rq"></textarea>
+          </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Precedent</button>
+          <button mat-button (click)="onSaveAssignment($event)">Valider</button>
+        </div>
+
+      </mat-step>
+    </mat-horizontal-stepper>
+
+  </form>
+
+</div>

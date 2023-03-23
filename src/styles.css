@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 50; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+
+.rendu {
+  color:green;
+  border:1px solid green;
+}
+
+.nonRendu {
+  color:red;
+  border: 2px dashed red;
+  background-color: yellow;
+}
+
+.important {
+  text-decoration: underline;
+}
